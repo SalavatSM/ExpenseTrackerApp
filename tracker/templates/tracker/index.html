@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трекер расходов</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Трекер расходов</h1>
+            <a href="{% url 'add_expense' %}" class="button is-primary">Добавить расход</a>
+            <h2 class="subtitle">Общие расходы: {{ total_expenses }}</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Категория</th>
+                        <th>Сумма</th>
+                        <th>Дата</th>
+                        <th>Описание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for expense in expenses %}
+                        <tr>
+                            <td>{{ expense.category }}</td>
+                            <td>{{ expense.amount }}</td>
+                            <td>{{ expense.date }}</td>
+                            <td>{{ expense.description }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>
+</html>
